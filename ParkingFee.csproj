@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyName>fuel-cost</AssemblyName>
-    <RootNamespace>FuelCost</RootNamespace>
+    <AssemblyName>parking-fee</AssemblyName>
+    <RootNamespace>ParkingFee</RootNamespace>
   </PropertyGroup>
 </Project>
