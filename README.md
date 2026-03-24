@@ -1,10 +1,10 @@
-dotnet build -c Release
+`dotnet build -c Release`
 
-ไฟล์อยู่ที่:
-.\bin\Release\net10.0-windows\parking-fee.exe
+Output file:
+`.\bin\Release\net10.0-windows\parking-fee.exe`
 
-โปรเจคนี้เป็นโปรแกรม Windows Forms สำหรับคำนวณค่าที่จอดรถ
-- กรอกเวลาเข้าจอด
-- กรอกเวลาออก
-- กรอกอัตราค่าจอดรถต่อชั่วโมง
-- ระบบปัดเศษเวลาขึ้นเป็นรายชั่วโมงอัตโนมัติ
+This project is a Windows Forms application for calculating parking fees.
+- Enter the entry time.
+- Enter the exit time.
+- Enter the hourly parking rate.
+- The system automatically rounds up parking time to whole billable hours.

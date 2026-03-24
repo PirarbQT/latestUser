@@ -40,7 +40,7 @@ internal sealed class ParkingFeeForm : Form
         {
             AutoSize = true,
             Location = new Point(24, 32),
-            Text = "เวลาเข้าจอด (HH:mm)"
+            Text = "Entry Time (HH:mm)"
         };
 
         entryTimeTextBox = new TextBox
@@ -53,7 +53,7 @@ internal sealed class ParkingFeeForm : Form
         {
             AutoSize = true,
             Location = new Point(24, 82),
-            Text = "เวลาออก (HH:mm)"
+            Text = "Exit Time (HH:mm)"
         };
 
         exitTimeTextBox = new TextBox
@@ -66,7 +66,7 @@ internal sealed class ParkingFeeForm : Form
         {
             AutoSize = true,
             Location = new Point(24, 132),
-            Text = "ค่าจอดรถต่อชั่วโมง (บาท)"
+            Text = "Hourly Rate (THB)"
         };
 
         hourlyRateTextBox = new TextBox
@@ -88,7 +88,7 @@ internal sealed class ParkingFeeForm : Form
         {
             Location = new Point(190, 360),
             Size = new Size(120, 38),
-            Text = "คำนวณ"
+            Text = "Calculate"
         };
         calculateButton.Click += CalculateButton_Click;
 
@@ -120,19 +120,19 @@ internal sealed class ParkingFeeForm : Form
     {
         if (!TryParseTime(entryTimeTextBox.Text, out TimeSpan entryTime))
         {
-            ShowValidationError("กรุณากรอกเวลาเข้าจอดในรูปแบบ HH:mm", entryTimeTextBox);
+            ShowValidationError("Please enter the entry time in HH:mm format.", entryTimeTextBox);
             return;
         }
 
         if (!TryParseTime(exitTimeTextBox.Text, out TimeSpan exitTime))
         {
-            ShowValidationError("กรุณากรอกเวลาออกในรูปแบบ HH:mm", exitTimeTextBox);
+            ShowValidationError("Please enter the exit time in HH:mm format.", exitTimeTextBox);
             return;
         }
 
         if (!TryParseDecimal(hourlyRateTextBox.Text, out decimal hourlyRate) || hourlyRate < 0)
         {
-            ShowValidationError("กรุณากรอกค่าจอดรถต่อชั่วโมงเป็นตัวเลขที่มากกว่าหรือเท่ากับ 0", hourlyRateTextBox);
+            ShowValidationError("Please enter a valid hourly rate greater than or equal to 0.", hourlyRateTextBox);
             return;
         }
 
@@ -148,12 +148,12 @@ internal sealed class ParkingFeeForm : Form
         decimal totalFee = billedHours * hourlyRate;
 
         resultTextBox.Text =
-            $"เวลาเข้าจอด: {entryTime:hh\\:mm}{Environment.NewLine}" +
-            $"เวลาออก: {exitTime:hh\\:mm}{Environment.NewLine}" +
-            $"ระยะเวลาจอดจริง: {FormatDuration(parkingDuration)}{Environment.NewLine}" +
-            $"ชั่วโมงที่คิดเงิน: {billedHours:N0} ชั่วโมง{Environment.NewLine}" +
-            $"อัตราค่าจอด: {hourlyRate:N2} บาท/ชั่วโมง{Environment.NewLine}{Environment.NewLine}" +
-            $"ค่าที่จอดรถรวม: {totalFee:N2} บาท";
+            $"Entry Time: {entryTime:hh\\:mm}{Environment.NewLine}" +
+            $"Exit Time: {exitTime:hh\\:mm}{Environment.NewLine}" +
+            $"Actual Duration: {FormatDuration(parkingDuration)}{Environment.NewLine}" +
+            $"Billed Hours: {billedHours:N0} {FormatUnit((int)billedHours, "hour", "hours")}{Environment.NewLine}" +
+            $"Hourly Rate: {hourlyRate:N2} THB/hour{Environment.NewLine}{Environment.NewLine}" +
+            $"Total Parking Fee: {totalFee:N2} THB";
     }
 
     private void ResetButton_Click(object? sender, EventArgs e)
@@ -166,7 +166,7 @@ internal sealed class ParkingFeeForm : Form
         entryTimeTextBox.Text = string.Empty;
         exitTimeTextBox.Text = string.Empty;
         hourlyRateTextBox.Text = string.Empty;
-        resultTextBox.Text = "กรอกเวลาเข้า เวลาออก และค่าจอดรถต่อชั่วโมง แล้วกดปุ่ม คำนวณ";
+        resultTextBox.Text = "Enter the entry time, exit time, and hourly rate, then click Calculate.";
         entryTimeTextBox.Focus();
     }
 
@@ -185,12 +185,17 @@ internal sealed class ParkingFeeForm : Form
     {
         int hours = (int)duration.TotalHours;
         int minutes = duration.Minutes;
-        return $"{hours} ชั่วโมง {minutes} นาที";
+        return $"{hours} {FormatUnit(hours, "hour", "hours")} {minutes} {FormatUnit(minutes, "minute", "minutes")}";
+    }
+
+    private static string FormatUnit(int value, string singular, string plural)
+    {
+        return value == 1 ? singular : plural;
     }
 
     private void ShowValidationError(string message, Control target)
     {
-        MessageBox.Show(this, message, "ข้อมูลไม่ถูกต้อง", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        MessageBox.Show(this, message, "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
         target.Focus();
         if (target is TextBox textBox)
         {

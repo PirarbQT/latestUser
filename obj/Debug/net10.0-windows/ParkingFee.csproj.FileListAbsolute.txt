@@ -1,0 +1,15 @@
+C:\Users\johnn\Downloads\LatestUser\bin\Debug\net10.0-windows\parking-fee.exe
+C:\Users\johnn\Downloads\LatestUser\bin\Debug\net10.0-windows\parking-fee.deps.json
+C:\Users\johnn\Downloads\LatestUser\bin\Debug\net10.0-windows\parking-fee.runtimeconfig.json
+C:\Users\johnn\Downloads\LatestUser\bin\Debug\net10.0-windows\parking-fee.dll
+C:\Users\johnn\Downloads\LatestUser\bin\Debug\net10.0-windows\parking-fee.pdb
+C:\Users\johnn\Downloads\LatestUser\obj\Debug\net10.0-windows\ParkingFee.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\johnn\Downloads\LatestUser\obj\Debug\net10.0-windows\ParkingFee.AssemblyInfoInputs.cache
+C:\Users\johnn\Downloads\LatestUser\obj\Debug\net10.0-windows\ParkingFee.AssemblyInfo.cs
+C:\Users\johnn\Downloads\LatestUser\obj\Debug\net10.0-windows\ParkingFee.csproj.CoreCompileInputs.cache
+C:\Users\johnn\Downloads\LatestUser\obj\Debug\net10.0-windows\ParkingFee.sourcelink.json
+C:\Users\johnn\Downloads\LatestUser\obj\Debug\net10.0-windows\parking-fee.dll
+C:\Users\johnn\Downloads\LatestUser\obj\Debug\net10.0-windows\refint\parking-fee.dll
+C:\Users\johnn\Downloads\LatestUser\obj\Debug\net10.0-windows\parking-fee.pdb
+C:\Users\johnn\Downloads\LatestUser\obj\Debug\net10.0-windows\ParkingFee.genruntimeconfig.cache
+C:\Users\johnn\Downloads\LatestUser\obj\Debug\net10.0-windows\ref\parking-fee.dll
